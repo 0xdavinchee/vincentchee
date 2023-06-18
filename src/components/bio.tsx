@@ -67,8 +67,7 @@ const Bio = () => {
           <div>
             <h2>gm</h2>
             <p>
-              I am a <strong>wantrepreneur</strong>, an{" "}
-              <strong>engineer</strong>, and a <strong>learner</strong>.
+              I am an <strong>entrepreneurial engineer</strong>.
             </p>
             <p>
               I strive to leverage technology, primarily <strong>crypto</strong>{" "}
