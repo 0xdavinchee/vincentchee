@@ -1,15 +1,21 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "vincent-chee",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "A personal portfolio/blog site based off gatsby's starter blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "0xdavinchee",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/0xdavinchee/vincentchee/issues"
   },
   "dependencies": {
-    "@fontsource/merriweather": "^5.0.3",
+    "@fontsource-variable/inter": "^5.0.3",
     "@fontsource-variable/montserrat": "^5.0.4",
+    "@fontsource/merriweather": "^5.0.3",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "gatsby": "^5.10.0",
     "gatsby-plugin-feed": "^5.10.0",
     "gatsby-plugin-image": "^3.10.0",
@@ -28,14 +34,14 @@
   "devDependencies": {
     "prettier": "^2.8.8"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/0xdavinchee/vincentchee#readme",
   "keywords": [
     "gatsby"
   ],
   "license": "0BSD",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/0xdavinchee/vincentchee.git"
   },
   "scripts": {
     "build": "gatsby build",
