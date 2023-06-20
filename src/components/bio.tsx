@@ -19,6 +19,7 @@ import {
   faInstagram,
   faLinkedin,
   faMedium,
+  faHashnode
 } from "@fortawesome/free-brands-svg-icons"
 import Icon from "./icon"
 
@@ -40,6 +41,7 @@ const Bio = () => {
             lens
             instagram
             medium
+            hashnode
           }
         }
       }
@@ -104,6 +106,16 @@ const Bio = () => {
             label="twitter"
           />
           <Icon
+            url={`${social?.substack || ``}`}
+            icon={faBookmark}
+            label="substack"
+          />
+          <Icon
+            url={`${social?.hashnode || ``}`}
+            icon={faHashnode}
+            label="hashnode"
+          />
+          <Icon
             url={`${social?.email || ``}`}
             icon={faEnvelope}
             label="email"
@@ -112,11 +124,6 @@ const Bio = () => {
             url={`${social?.linkedin || ``}`}
             icon={faLinkedin}
             label="linkedin"
-          />
-          <Icon
-            url={`${social?.substack || ``}`}
-            icon={faBookmark}
-            label="substack"
           />
           <Icon
             url={`${social?.instagram || ``}`}

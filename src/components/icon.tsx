@@ -12,7 +12,7 @@ interface IconProps {
 const Icon = (props: IconProps) => {
   return (
     <div style={{ display: "flex", marginBottom: "0.5rem" }}>
-      <a href={props.url} download={props.isDownload}>
+      <a href={props.url} download={props.isDownload} target="_blank">
         <div style={{ display: "flex", alignItems: "center" }}>
           <FontAwesomeIcon icon={props.icon} />
           <p style={{ paddingLeft: "0.25rem" }}>{props.label}</p>

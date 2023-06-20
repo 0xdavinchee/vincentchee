@@ -25,6 +25,7 @@ module.exports = {
       medium: "https://medium.com/@0xdavinchee",
       instagram: `https://www.instagram.com/duhvinchee/?hl=en`,
       linkedin: `https://www.linkedin.com/in/vincent-kh-chee/`,
+      hashnode: `https://0xdavinchee.hashnode.dev/`
     },
   },
   plugins: [
