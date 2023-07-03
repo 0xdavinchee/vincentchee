@@ -19,7 +19,7 @@ import {
   faInstagram,
   faLinkedin,
   faMedium,
-  faHashnode
+  faHashnode,
 } from "@fortawesome/free-brands-svg-icons"
 import Icon from "./icon"
 
@@ -80,8 +80,8 @@ const Bio = () => {
               basketball.
             </p>
             <p>
-              To stay <strong>sharp</strong>, I learn new things and
-              apply them to make my life better or just because curiosity.
+              To stay <strong>sharp</strong>, I learn new things and apply them
+              to make my life better or just because curiosity.
             </p>
             <p>
               To <strong>enjoy life</strong>, I spend time with friends and
