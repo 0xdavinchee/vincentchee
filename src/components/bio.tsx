@@ -73,7 +73,7 @@ const Bio = () => {
             </p>
             <p>
               I strive to leverage technology to add value to people's lives. I
-              am especially interested in crypto and AI.
+              am especially interested in <strong>crypto</strong> and <strong>AI</strong>.
             </p>
             <p>
               To stay <strong>healthy</strong>, I go to the gym and play
