@@ -52,11 +52,12 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
+  --color-primary: var(--color-text);
+  --color-text: rgb(233, 224, 216);
   --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
+  --color-heading: var(--color-text);
+  --color-background: #232527;
+  --color-heading-black: var(--color-text);
   --color-accent: #d1dce5;
 }
 
@@ -73,13 +74,13 @@ html {
   font-size: var(--fontSize-root);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(251,250,249);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
-  color: var(--color-text);
 }
 
 footer {

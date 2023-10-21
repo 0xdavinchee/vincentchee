@@ -81,7 +81,7 @@ const Bio = () => {
             </p>
             <p>
               To stay <strong>sharp</strong>, I learn new things and apply them
-              to make my life better or just because curiosity.
+              to make my life better or just out of curiosity.
             </p>
             <p>
               To <strong>enjoy life</strong>, I spend time with friends and

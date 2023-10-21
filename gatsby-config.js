@@ -129,5 +129,6 @@ module.exports = {
         icon: `src/images/white-logo-small.png`, // This path is relative to the root of the site.
       },
     },
+    
   ],
 }
