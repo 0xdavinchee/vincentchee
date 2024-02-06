@@ -22,6 +22,7 @@ import {
   faHashnode,
 } from "@fortawesome/free-brands-svg-icons"
 import Icon from "./icon"
+import { faPodcast } from "@fortawesome/free-solid-svg-icons"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -33,6 +34,7 @@ const Bio = () => {
             summary
           }
           social {
+            unpretentiousai
             twitter
             github
             linkedin
@@ -72,12 +74,18 @@ const Bio = () => {
               I am an <strong>entrepreneurial engineer</strong>.
             </p>
             <p>
-              I strive to leverage technology to add value to people's lives. I
-              am especially interested in <strong>crypto</strong> and <strong>AI</strong>.
+              I am a co-host of the{" "}
+              <a href="https://unpretentious.ai">unpretentious.ai</a> podcast.
             </p>
             <p>
-              To stay <strong>healthy</strong>, I go to the gym and play
-              basketball.
+              Technology is a tool to improve our lives, and I strive to
+              leverage it to add value to my own and other people's lives. I am
+              especially interested in <strong>crypto</strong> and{" "}
+              <strong>AI</strong>.
+            </p>
+            <p>
+              I go to the gym, do Brazilian jiu-jitsu, and play basketball to
+              stay <strong>healthy</strong>.
             </p>
             <p>
               To stay <strong>sharp</strong>, I learn new things and apply them
@@ -94,6 +102,11 @@ const Bio = () => {
       {social && (
         <div>
           <h3>connect with me</h3>
+          <Icon
+            url={`${social?.unpretentiousai || ``}`}
+            icon={faPodcast}
+            label="unpretentious.ai"
+          />
           <Icon
             url={`${social?.github || ``}`}
             icon={faGithub}

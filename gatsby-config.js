@@ -17,6 +17,7 @@ module.exports = {
     description: `A personal portfolio and blog.`,
     siteUrl: `https://vincentchee.com/`,
     social: {
+      unpretentiousai: `https://unpretentious.ai`,
       twitter: `https://twitter.com/0xdavinchee`,
       github: `https://github.com/0xdavinchee`,
       substack: `https://substack.com/0xdavinchee`,
