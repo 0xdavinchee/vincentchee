@@ -148,12 +148,6 @@ const Bio = () => {
             icon={faMedium}
             label="medium"
           />
-          <Icon
-            url={"/chee-resume.pdf"}
-            icon={faFile}
-            label="resumé"
-            isDownload
-          />
         </div>
       )}
     </div>
