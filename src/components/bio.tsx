@@ -74,8 +74,8 @@ const Bio = () => {
               I am an <strong>entrepreneurial engineer</strong>.
             </p>
             <p>
-              I am a co-host of the{" "}
-              <a href="https://unpretentious.ai">unpretentious.ai</a> podcast.
+              I am a co-creator of{" "}
+              <a href="https://unpretentious.ai">unpretentious.ai</a>.
             </p>
             <p>
               Technology is a tool to improve our lives, and I strive to
