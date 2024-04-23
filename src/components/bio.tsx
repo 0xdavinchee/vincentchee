@@ -67,10 +67,7 @@ const Bio = () => {
           <div>
             <h2>gm</h2>
             <p>
-              I am a <strong>fun</strong> guy.
-            </p>
-            <p>
-              I am a co-creator of{" "}
+              I'm a fun guy and co-creator of{" "}
               <a target="_blank" href="https://vinandyoung.com">
                 Vin & Young
               </a>
