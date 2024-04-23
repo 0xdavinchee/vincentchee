@@ -5,24 +5,20 @@
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
 
-import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import {
-  faBookmark,
-  faEnvelope,
-  faFile,
-} from "@fortawesome/free-regular-svg-icons"
-import {
-  faTwitter,
   faGithub,
+  faHashnode,
   faInstagram,
   faLinkedin,
   faMedium,
-  faHashnode,
+  faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
+import { faBookmark, faEnvelope } from "@fortawesome/free-regular-svg-icons"
+import { faMicrophone } from "@fortawesome/free-solid-svg-icons"
+import { graphql, useStaticQuery } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+import * as React from "react"
 import Icon from "./icon"
-import { faPodcast } from "@fortawesome/free-solid-svg-icons"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -34,7 +30,7 @@ const Bio = () => {
             summary
           }
           social {
-            unpretentiousai
+            vinandyoung
             twitter
             github
             linkedin
@@ -71,30 +67,28 @@ const Bio = () => {
           <div>
             <h2>gm</h2>
             <p>
-              I am an <strong>entrepreneurial engineer</strong>.
+              I am a <strong>fun</strong> guy.
             </p>
             <p>
               I am a co-creator of{" "}
-              <a href="https://unpretentious.ai">unpretentious.ai</a>.
+              <a target="_blank" href="https://vinandyoung.com">
+                Vin & Young
+              </a>
+              .
             </p>
             <p>
-              Technology is a tool to improve our lives, and I strive to
-              leverage it to add value to my own and other people's lives. I am
-              especially interested in <strong>crypto</strong> and{" "}
-              <strong>AI</strong>.
+              I like to laugh, learn and live life to the fullest because we're
+              all gonna die one day and life is too short not to have fun and do
+              what gets you excited to wake up in the morning.
             </p>
             <p>
-              I go to the gym, do Brazilian jiu-jitsu, and play basketball to
-              stay <strong>healthy</strong>.
+              I lift, do Brazilian jiu-jitsu, and play basketball to put myself
+              into discomfort explicitly.
             </p>
             <p>
-              To stay <strong>sharp</strong>, I learn new things and apply them
-              to make my life better or just out of curiosity.
-            </p>
-            <p>
-              To <strong>enjoy life</strong>, I spend time with friends and
-              family, and splurge on experiences: <strong>traveling</strong> and{" "}
-              <strong>eating delicious food</strong>.
+              For leisure, I spend time with friends and family, and splurge on
+              experiences: <strong>traveling</strong> and cooking or eating
+              delicious food.
             </p>
           </div>
         </div>
@@ -103,9 +97,9 @@ const Bio = () => {
         <div>
           <h3>connect with me</h3>
           <Icon
-            url={`${social?.unpretentiousai || ``}`}
-            icon={faPodcast}
-            label="unpretentious.ai"
+            url={`${social?.vinandyoung || ``}`}
+            icon={faMicrophone}
+            label="vin & young"
           />
           <Icon
             url={`${social?.github || ``}`}

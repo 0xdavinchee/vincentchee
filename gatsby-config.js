@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `vincent chee ｜ 徐冠雄`,
+    title: `vincent chee | 徐冠雄`,
     author: {
       name: `Vincent`,
       summary: `who lives and works on Earth.`,
@@ -17,7 +17,7 @@ module.exports = {
     description: `A personal portfolio and blog.`,
     siteUrl: `https://vincentchee.com/`,
     social: {
-      unpretentiousai: `https://unpretentious.ai`,
+      vinandyoung: `https://vinandyoung.com`,
       twitter: `https://twitter.com/0xdavinchee`,
       github: `https://github.com/0xdavinchee`,
       substack: `https://substack.com/0xdavinchee`,
@@ -26,7 +26,7 @@ module.exports = {
       medium: "https://medium.com/@0xdavinchee",
       instagram: `https://www.instagram.com/duhvinchee/?hl=en`,
       linkedin: `https://www.linkedin.com/in/vincent-kh-chee/`,
-      hashnode: `https://0xdavinchee.hashnode.dev/`
+      hashnode: `https://0xdavinchee.hashnode.dev/`,
     },
   },
   plugins: [
@@ -130,6 +130,5 @@ module.exports = {
         icon: `src/images/white-logo-small.png`, // This path is relative to the root of the site.
       },
     },
-    
   ],
 }
