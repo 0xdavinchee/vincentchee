@@ -1,6 +1,6 @@
 ---
 title: The Science of Success - How to Set and Achieve your Goals
-date: "2023-11-06"
+publishedAt: 2023-11-06
 description: A distillation of Andrew Huberman's Goals Toolkit providing a stupid simple guide on how to set and achieve goals.
 ---
 

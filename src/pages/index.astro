@@ -1,0 +1,145 @@
+---
+import { Picture } from "astro:assets";
+import profilePic from "../assets/profile.jpg";
+import FloatingBox from "../components/SmallBox.astro";
+import { Config } from "../config";
+import Layout from "../layouts/Layout.astro";
+
+const years = () => {
+  const start = new Date(Config.me.started);
+  const now = new Date();
+  return now.getFullYear() - start.getFullYear();
+};
+
+import { getCollection } from "astro:content";
+const posts = (await getCollection("posts")).sort(function (
+  first: any,
+  second: any
+) {
+  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
+});
+---
+
+<Layout>
+  <main>
+    <div class="flex flex-col gap-20">
+      <article class="md:flex-row-reverse md:justify-end md:gap-12">
+        <div class="flex flex-row justify-between sm:grid-cols-3">
+          <div class="col-span-2 flex flex-col gap-6 md:gap-8 my-auto">
+            <h1 class="text-3xl">gm, I'm {Config.me.name.split(" ")[0]}</h1>
+            <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
+              I love to laugh, learn and live life to the fullest because life
+              is too short to not have fun and do what gets you excited to wake
+              up in the morning.
+            </h2>
+            <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
+              I'm a fun guy and co-creator of <a
+                class="text-primary"
+                href="https://www.vinandyoung.com"
+                rel="noreferrer"
+                target="_blank">Vin & Young</a
+              >.
+            </h2>
+            <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
+              To stay fit, I lift weights, do Brazilian jiu-jitsu and play
+              basketball.
+            </h2>
+            <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
+              For leisure, I spend time with friends and family, and splurge on
+              experiences: traveling and cooking or eating delicious food.
+            </h2>
+            <div class="custom-breadcrumbs">
+              <ul>
+                {
+                  Object.keys(Config.socials).map((social) => (
+                    <li>
+                      <a
+                        href={
+                          Config.socials[social as keyof typeof Config.socials]
+                        }
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {social.charAt(0).toUpperCase() + social.slice(1)}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+          <div class="ml-auto hidden sm:block">
+            <div class="avatar">
+              <div class="w-60 rounded">
+                <Picture
+                  src={profilePic}
+                  formats={["avif", "webp"]}
+                  alt="a fun crypto cowboy"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- 
+      <article class="flex flex-col gap-8">
+        <header class="flex w-full flex-row justify-between gap-2">
+          <h3 class="text-lg">Featured projects</h3>
+          <a
+            href={Config.me.projectLink}
+            class="text-sm text-primary underline decoration-dashed underline-offset-8"
+            target="_self"
+            rel="noreferrer"
+            >See all projects
+          </a>
+        </header>
+        <section
+          class="grid grid-cols-1 gap-4 sm:grid-cols-2 justify-center items-stretch"
+        >
+          {
+            Object.keys(Config.projects).map((project) => (
+              <FloatingBox
+                title={project}
+                href={
+                  Config.projects[project as keyof typeof Config.projects].url
+                }
+                tags={
+                  Config.projects[project as keyof typeof Config.projects].tags
+                }
+              />
+            ))
+          }
+        </section>
+      </article> -->
+      <div class="divider m-0"></div>
+      <article class="flex flex-col gap-8">
+        <header class="flex w-full flex-row justify-between gap-2">
+          <h3 class="text-lg">Latest posts</h3>
+          <a
+            href="/posts"
+            class="text-sm text-primary underline decoration-dashed underline-offset-8"
+            rel="noreferrer"
+            >See all posts
+          </a>
+        </header>
+        <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 mx-auto">
+          {
+            posts.map((post: any) => (
+              <FloatingBox
+                title={post.data.title}
+                publishedAt={post.data.publishedAt.toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+                description={post.data.description}
+                href={"/posts/" + post.slug}
+              />
+            ))
+          }
+        </section>
+      </article>
+    </div>
+  </main>
+</Layout>
