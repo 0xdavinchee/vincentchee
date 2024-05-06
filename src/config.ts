@@ -3,10 +3,6 @@ import icon from "../src/assets/icon.png";
 interface IConfig {
   me: {
     name: string;
-    job: string;
-    started: string;
-    stack: string;
-    hobby: string;
     projectLink: string;
   };
   socials: {

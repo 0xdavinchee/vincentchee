@@ -5,12 +5,6 @@ import FloatingBox from "../components/SmallBox.astro";
 import { Config } from "../config";
 import Layout from "../layouts/Layout.astro";
 
-const years = () => {
-  const start = new Date(Config.me.started);
-  const now = new Date();
-  return now.getFullYear() - start.getFullYear();
-};
-
 import { getCollection } from "astro:content";
 const posts = (await getCollection("posts")).sort(function (
   first: any,
