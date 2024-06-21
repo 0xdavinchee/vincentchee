@@ -1,17 +1,17 @@
 ---
-import { Picture } from "astro:assets";
-import profilePic from "../assets/profile.jpg";
-import FloatingBox from "../components/SmallBox.astro";
-import { Config } from "../config";
-import Layout from "../layouts/Layout.astro";
+import { Picture } from "astro:assets"
+import profilePic from "../assets/profile.jpg"
+import FloatingBox from "../components/SmallBox.astro"
+import { Config } from "../config"
+import Layout from "../layouts/Layout.astro"
 
-import { getCollection } from "astro:content";
+import { getCollection } from "astro:content"
 const posts = (await getCollection("posts")).sort(function (
   first: any,
   second: any
 ) {
-  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-});
+  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
+})
 ---
 
 <Layout>
@@ -27,16 +27,11 @@ const posts = (await getCollection("posts")).sort(function (
               up in the morning.
             </h2>
             <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
-              I'm a fun guy and co-creator of <a
-                class="text-primary"
-                href="https://www.vinandyoung.com"
-                rel="noreferrer"
-                target="_blank">Vin & Young</a
-              >.
+              I'm a fun guy currently pursuing stand-up comedy and content
+              creation.
             </h2>
             <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
-              To stay fit, I lift weights, do Brazilian jiu-jitsu and play
-              basketball.
+              To stay fit, I lift weights and play basketball.
             </h2>
             <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
               For leisure, I spend time with friends and family, and splurge on
@@ -45,7 +40,7 @@ const posts = (await getCollection("posts")).sort(function (
             <div class="custom-breadcrumbs">
               <ul>
                 {
-                  Object.keys(Config.socials).map((social) => (
+                  Object.keys(Config.socials).map(social => (
                     <li>
                       <a
                         href={

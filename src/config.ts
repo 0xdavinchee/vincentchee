@@ -27,7 +27,6 @@ export const Config: IConfig = {
   socials: {
     warpcast: "https://warpcast.com/0xdavinchee",
     twitter: "https://twitter.com/0xdavinchee",
-    "vin & Young": "https://www.vinandyoung.com/",
     gitHub: "https://github.com/0xdavinchee",
     paragraph:
       "https://paragraph.xyz/@0x688390820b57cd65c1f76b5509ba28f79a343343",
