@@ -1,7 +1,6 @@
 ---
 title: Web3 | Two Years In Web3 (almost) — Reflections
 publishedAt: 2023-04-16
-cover: ./birds-eye-superfluid.png
 description: A brief summary of the good, the bad, and the ugly of my time in Web3 and some useful takeaways.
 ---
 _A brief summary of the good, the bad, and the ugly of my time in Web3 and some useful takeaways._

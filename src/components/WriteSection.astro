@@ -1,22 +1,14 @@
 ---
+import SectionHeading from "./SectionHeading.astro";
 import WritingList from "./WritingList.astro";
 import { elsewhereWriting } from "../data/profile";
 ---
 
 <section id="write" data-side="write" aria-labelledby="write-title" class="scroll-mt-12 py-24 sm:py-32">
-  <div class="mx-auto max-w-7xl space-y-14 px-4 sm:px-8">
+  <div class="mx-auto max-w-7xl space-y-12 px-4 sm:px-8">
     <header class="grid gap-6 lg:grid-cols-2 lg:items-end">
-      <div class="space-y-5">
-        <p class="label">03 / write</p>
-        <h2
-          id="write-title"
-          class="font-serif text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] font-medium tracking-[-0.03em]"
-          style="font-variation-settings: 'opsz' 144"
-        >
-          Writing<span class="text-accent">.</span>
-        </h2>
-      </div>
-      <p class="max-w-md font-mono text-sm leading-relaxed text-muted lg:justify-self-end">
+      <SectionHeading id="write-title" zh="文章">Writing.</SectionHeading>
+      <p class="max-w-md text-muted lg:justify-self-end">
         Occasional long-form. Also on{" "}
         {
           elsewhereWriting.map((w, i) => (

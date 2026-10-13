@@ -1,52 +1,39 @@
 ---
+import SectionHeading from "./SectionHeading.astro";
 import { identity, socials } from "../data/profile";
 
 const year = new Date().getFullYear();
 ---
 
 <footer id="contact" aria-labelledby="contact-title" class="scroll-mt-12">
-  <div data-side="create" class="bg-grain py-24 sm:py-32">
+  <div data-side="create" class="py-24 sm:py-32">
     <div class="mx-auto max-w-7xl space-y-8 px-4 sm:px-8">
-      <p class="label">04 / say hi</p>
-      <h2
-        id="contact-title"
-        class="font-serif text-[clamp(3.5rem,13vw,11rem)] leading-[0.85] font-medium tracking-[-0.04em]"
-        style="font-variation-settings: 'opsz' 144"
-      >
-        Say <em class="text-vermilion">gm</em>.
-      </h2>
-      <p class="max-w-xl text-lg leading-relaxed text-muted">
-        Collabs, ideas, restaurant recs, or something you want built.
-      </p>
+      <SectionHeading id="contact-title" zh="早安" class="text-[clamp(3.25rem,11vw,9rem)] leading-[0.9]">
+        Say <em>gm</em>.
+      </SectionHeading>
+      <p class="max-w-xl text-lg text-muted">Collabs, ideas, restaurant recs, or something you want built.</p>
       <a
         href={`mailto:${identity.email}`}
-        class="inline-block font-serif text-[clamp(1.4rem,4.5vw,3rem)] break-all text-navy underline decoration-vermilion decoration-2 underline-offset-[0.2em] transition-colors hover:text-vermilion-deep sm:break-normal"
+        class="inline-block font-serif text-[clamp(1.4rem,4.5vw,3rem)] break-all text-navy underline decoration-vermilion decoration-2 underline-offset-[0.2em] hover:text-vermilion-deep sm:break-normal"
       >
         {identity.email}
       </a>
     </div>
   </div>
-  <div data-side="build" class="bg-grid">
-    <div
-      class="mx-auto grid max-w-7xl gap-10 px-4 py-14 font-mono text-xs sm:grid-cols-[1fr_auto] sm:items-end sm:px-8"
-    >
-      <ul class="grid grid-cols-2 gap-x-10 gap-y-3 sm:grid-cols-3">
+  <div data-side="build">
+    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 text-sm sm:grid-cols-[1fr_auto] sm:items-center sm:px-8">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
         {
           socials.map((s) => (
             <li>
-              <a href={s.url} target="_blank" rel="noopener noreferrer" class="group relative text-muted hover:text-fg">
-                <span class="absolute -left-4 text-accent opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">
-                  &gt;
-                </span>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" class="text-muted underline-offset-4 hover:text-fg hover:underline">
                 {s.label}
               </a>
             </li>
           ))
         }
       </ul>
-      <div class="space-y-1 text-muted sm:text-right">
-        <p>© {year} {identity.name} · {identity.chinese}</p>
-      </div>
+      <p class="text-muted">© {year} {identity.name} <span lang="zh-Hant" class="font-kai">{identity.chinese}</span></p>
     </div>
   </div>
 </footer>

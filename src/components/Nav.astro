@@ -1,22 +1,23 @@
 ---
+import Seal from "./Seal.astro";
+
 const links = [
-  { href: "/#build", label: "build" },
-  { href: "/#create", label: "create" },
-  { href: "/#write", label: "write" },
-  { href: "/#contact", label: "say gm" },
+  { href: "/#build", label: "Work" },
+  { href: "/#create", label: "Create" },
+  { href: "/#write", label: "Writing" },
+  { href: "/#contact", label: "Contact" },
 ];
-const pill = "rounded-full bg-ink/85 px-4 py-2 text-white ring-1 ring-white/10 backdrop-blur";
+const pill = "rounded-full bg-ink/85 text-white ring-1 ring-white/10 backdrop-blur";
 ---
 
 <header class="pointer-events-none fixed inset-x-0 top-0 z-40">
-  <nav
-    aria-label="Primary"
-    class="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 font-mono text-[0.78rem] sm:px-6"
-  >
-    <a href="/" class:list={["pointer-events-auto font-semibold tracking-tight", pill]} aria-label="Vincent Chee, home"
-      >VC<span class="text-gold">/</span></a
-    >
-    <ul class:list={["pointer-events-auto flex gap-4 sm:gap-6", pill]}>
+  <nav aria-label="Primary" class="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 text-[0.82rem] sm:px-6">
+    <a href="/" class:list={["pointer-events-auto flex items-center gap-2.5 py-1.5 pr-4 pl-1.5", pill]}>
+      <Seal size={26} />
+      <span class="hidden font-medium sm:inline">Vincent Chee</span>
+      <span class="sr-only sm:hidden">Vincent Chee, home</span>
+    </a>
+    <ul class:list={["pointer-events-auto flex gap-4 px-4 py-2 sm:gap-6", pill]}>
       {
         links.map((l) => (
           <li>
