@@ -13,7 +13,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "check": "astro check && vitest run && playwright test",
-    "og": "node scripts/og.mjs",
+    "og": "astro build && node scripts/og.mjs",
     "test:links": "astro build && playwright test -c playwright.links.config.ts"
   },
   "dependencies": {

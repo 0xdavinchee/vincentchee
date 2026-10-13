@@ -91,6 +91,18 @@ test("every internal link resolves", async ({ page, request }) => {
   expect(seen.size).toBeGreaterThan(3);
 });
 
+test("unknown routes get the branded 404", async ({ page }) => {
+  const res = await page.goto("/definitely-not-a-page");
+  expect(res?.status()).toBe(404);
+  await expect(page.getByText("This page doesn't exist.")).toBeVisible();
+});
+
+test("icons and social image are served", async ({ request }) => {
+  for (const path of ["/favicon.svg", "/apple-touch-icon.png", "/og.png"]) {
+    expect((await request.get(path)).status(), path).toBe(200);
+  }
+});
+
 test("images have alt attributes and load", async ({ page }) => {
   await page.goto("/");
   const imgs = page.locator("img");

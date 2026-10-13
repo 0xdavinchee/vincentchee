@@ -19,8 +19,16 @@ try {
   await page.goto(url, { waitUntil: "networkidle" });
   await page.addStyleTag({ content: "header,p.inline-flex{display:none!important}" });
   await page.screenshot({ path: "public/og.png" });
+
+  // apple-touch-icon from the same SVG as the favicon, so both always match
+  const svg = (await import("node:fs")).readFileSync("public/favicon.svg", "utf8")
+    .replace("<svg ", '<svg width="180" height="180" ')
+    .replace('rx="12"', 'rx="0"'); // iOS applies its own corner mask
+  const icon = await browser.newPage({ viewport: { width: 180, height: 180 } });
+  await icon.setContent(`<html><body style="margin:0;background:#0b1226">${svg}</body></html>`);
+  await icon.screenshot({ path: "public/apple-touch-icon.png" });
   await browser.close();
-  console.log("wrote public/og.png");
+  console.log("wrote public/og.png and public/apple-touch-icon.png");
 } finally {
   server.kill();
 }

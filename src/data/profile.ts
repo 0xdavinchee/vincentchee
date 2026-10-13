@@ -81,7 +81,7 @@ export const places: Place[] = [
 
 export const buildStats: Stat[] = [
   { value: "7+", label: "years shipping" },
-  { value: "2y10m", label: "at Superfluid" },
+  { value: "2y 10m", label: "at Superfluid" },
   { value: "1h → 30m", label: "CI build time" },
   { value: "SDK-Core", label: "owned end to end" },
 ];
