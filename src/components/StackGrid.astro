@@ -1,0 +1,19 @@
+---
+import { stack } from "../data/profile";
+---
+
+<figure class="overflow-hidden border border-line bg-surface font-mono text-[0.8rem]">
+  <figcaption class="flex items-center gap-2 border-b border-line px-4 py-3 text-muted">
+    <span class="flex gap-1.5" aria-hidden="true">
+      <span class="size-2.5 rounded-full bg-white/15"></span>
+      <span class="size-2.5 rounded-full bg-white/15"></span>
+      <span class="size-2.5 rounded-full bg-accent"></span>
+    </span>
+    <span class="ml-2">stack.toml</span>
+  </figcaption>
+  <pre class="overflow-x-auto p-4 leading-7 whitespace-pre-wrap"><code>{
+    stack.map((g, i) => (
+      <span class="grid grid-cols-[1.75rem_1fr]"><span class="select-none text-muted/50">{i + 1}</span><span><span class="text-fg">{g.group}</span> <span class="text-muted">=</span> <span class="text-muted">[</span>{g.items.map((item, j) => (<><span class="text-accent">"{item}"</span>{j < g.items.length - 1 && <span class="text-muted">, </span>}</>))}<span class="text-muted">]</span></span></span>
+    ))
+  }</code></pre>
+</figure>

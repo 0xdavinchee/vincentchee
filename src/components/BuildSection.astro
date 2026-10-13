@@ -1,0 +1,49 @@
+---
+import StatStrip from "./StatStrip.astro";
+import ExperienceLog from "./ExperienceLog.astro";
+import StackGrid from "./StackGrid.astro";
+import ProjectCard from "./ProjectCard.astro";
+import { buildIntro, buildStats, education, projects } from "../data/profile";
+---
+
+<section id="build" data-side="build" aria-labelledby="build-title" class="scroll-mt-12 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl space-y-16 px-4 sm:space-y-24 sm:px-8">
+    <header class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-end">
+      <div class="space-y-5">
+        <p class="label">01 / build</p>
+        <h2 id="build-title" class="text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] font-semibold tracking-[-0.04em]">
+          I build the<br />hard part<span class="text-accent">_</span>
+        </h2>
+      </div>
+      <div class="space-y-4">
+        <p class="max-w-xl text-lg leading-relaxed text-fg/80">{buildIntro}</p>
+        <p class="font-mono text-xs text-muted">
+          {education.school} · {education.degree} · {education.years}
+        </p>
+      </div>
+    </header>
+
+    <StatStrip stats={buildStats} />
+
+    <ExperienceLog />
+
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+      <div class="space-y-4">
+        <p class="label"><span class="text-accent">$</span> cat stack.toml</p>
+        <StackGrid />
+      </div>
+      <div class="space-y-4">
+        <p class="label"><span class="text-accent">$</span> ls ~/selected</p>
+        <ul class="grid gap-4 sm:grid-cols-2">
+          {
+            projects.map((p) => (
+              <li>
+                <ProjectCard project={p} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
