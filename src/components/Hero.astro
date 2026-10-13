@@ -12,8 +12,8 @@ const nameSize = "text-[23vw] sm:text-[clamp(3.6rem,17.5vw,16rem)]";
         <span class="text-accent">~</span> $ whoami<br />
         <span class="text-fg">ai-first engineer</span>
       </p>
-      <p class="rise max-w-[14ch] text-right font-mono text-sm text-fg sm:text-lg" style="--i:2">
-        {identity.tagline[0]}
+      <p class="rise text-right font-mono text-sm text-fg sm:text-lg" style="--i:2">
+        {identity.greeting}
       </p>
     </div>
     <div class="mx-auto w-full max-w-7xl px-3 sm:px-6">
@@ -36,22 +36,22 @@ const nameSize = "text-[23vw] sm:text-[clamp(3.6rem,17.5vw,16rem)]";
       <p
         aria-hidden="true"
         class:list={[
-          "rise -mt-[0.06em] font-serif leading-[0.85] font-medium tracking-[-0.03em] text-tomato italic select-none",
+          "rise -mt-[0.06em] font-serif leading-[0.85] font-medium tracking-[-0.03em] text-vermilion italic select-none",
           nameSize,
         ]}
         style="--i:2; font-variation-settings: 'opsz' 144"
       >
-        {identity.last}<span class="text-espresso not-italic">.</span>
+        {identity.last}<span class="text-navy not-italic">.</span>
       </p>
     </div>
 
     <div class="mx-auto mt-8 grid w-full max-w-7xl gap-8 px-4 sm:mt-10 sm:grid-cols-[1fr_auto] sm:items-end sm:px-8">
       <div class="rise space-y-6" style="--i:3">
-        <p class="max-w-[18ch] font-serif text-3xl leading-[1.05] sm:text-5xl" style="font-variation-settings: 'opsz' 96">
-          {identity.tagline[1]}
+        <p class="max-w-[20ch] font-serif text-3xl leading-[1.05] sm:text-5xl" style="font-variation-settings: 'opsz' 96">
+          {identity.tagline}
         </p>
         <p class="inline-flex items-center gap-3 rounded-full border border-line bg-surface px-4 py-2 font-mono text-xs sm:text-sm">
-          <span class="size-2 rounded-full bg-tomato" aria-hidden="true"></span>
+          <span class="size-2 rounded-full bg-vermilion" aria-hidden="true"></span>
           <span><span class="text-muted">Now:</span> {identity.now}</span>
         </p>
       </div>

@@ -9,16 +9,17 @@
   --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-serif: "Fraunces Variable", Georgia, "Times New Roman", serif;
 
-  --color-ink: #0a0c0f;
-  --color-graphite: #12161b;
-  --color-acid: #c6ff3d;
-  --color-cream: #f2eadc;
-  --color-paper: #fbf5ea;
-  --color-tomato: #e8462b;
-  --color-tomato-deep: #b3301a;
-  --color-chili: #c4351c;
-  --color-saffron: #f2a93b;
-  --color-espresso: #1b1410;
+  /* Shared colors of the Malaysian, Chinese and Taiwanese flags, toned for screen */
+  --color-ink: #0b1226;
+  --color-graphite: #131c38;
+  --color-navy: #101b3b;
+  --color-royal: #1f3a93;
+  --color-gold: #f2c230;
+  --color-vermilion: #d2232a;
+  --color-vermilion-deep: #a3161c;
+  --color-lacquer: #520e13;
+  --color-porcelain: #f3f4f7;
+  --color-paper: #ffffff;
 }
 
 /* Side tokens: every section opts into one side; components only use these. */
@@ -37,37 +38,50 @@
 [data-side="build"] {
   --side-bg: var(--color-ink);
   --side-surface: var(--color-graphite);
-  --side-fg: #e7eaee;
-  --side-muted: #8b95a1;
+  --side-fg: #e9edf5;
+  --side-muted: #8d97ab;
   --side-line: rgb(255 255 255 / 0.08);
-  --side-accent: var(--color-acid);
+  --side-accent: var(--color-gold);
   --side-accent-fg: var(--color-ink);
-  --side-accent-text: var(--color-acid);
+  --side-accent-text: var(--color-gold);
   color-scheme: dark;
 }
 
 [data-side="create"] {
-  --side-bg: var(--color-cream);
+  --side-bg: var(--color-porcelain);
   --side-surface: var(--color-paper);
-  --side-fg: var(--color-espresso);
-  --side-muted: #6b5d52;
-  --side-line: rgb(27 20 16 / 0.14);
-  --side-accent: var(--color-tomato);
+  --side-fg: var(--color-navy);
+  --side-muted: #566078;
+  --side-line: rgb(16 27 59 / 0.14);
+  --side-accent: var(--color-vermilion);
   --side-accent-fg: var(--color-paper);
-  --side-accent-text: var(--color-tomato-deep);
+  --side-accent-text: var(--color-vermilion-deep);
   color-scheme: light;
 }
 
-/* Writing: where the two meet. Espresso ground, serif titles, mono metadata. */
+/* Writing: lacquer red and gold. Serif titles, mono metadata. */
 [data-side="write"] {
-  --side-bg: var(--color-espresso);
-  --side-surface: #241b16;
-  --side-fg: var(--color-cream);
-  --side-muted: #b3a597;
-  --side-line: rgb(242 234 220 / 0.12);
-  --side-accent: var(--color-saffron);
-  --side-accent-fg: var(--color-espresso);
-  --side-accent-text: var(--color-saffron);
+  --side-bg: var(--color-lacquer);
+  --side-surface: #651419;
+  --side-fg: #f6f1f1;
+  --side-muted: #d9b3b0;
+  --side-line: rgb(255 255 255 / 0.14);
+  --side-accent: var(--color-gold);
+  --side-accent-fg: var(--color-lacquer);
+  --side-accent-text: var(--color-gold);
+  color-scheme: dark;
+}
+
+/* Origin band: a flag-red stripe between the hero and the work */
+[data-side="origin"] {
+  --side-bg: var(--color-vermilion);
+  --side-surface: #b81d23;
+  --side-fg: var(--color-paper);
+  --side-muted: #fff0f0;
+  --side-line: rgb(255 255 255 / 0.3);
+  --side-accent: var(--color-gold);
+  --side-accent-fg: var(--color-ink);
+  --side-accent-text: var(--color-paper);
   color-scheme: dark;
 }
 
@@ -86,15 +100,15 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: var(--color-acid);
+    background: var(--color-gold);
     color: var(--color-ink);
   }
   [data-side="create"] ::selection {
-    background: var(--color-tomato);
+    background: var(--color-vermilion);
     color: var(--color-paper);
   }
   :focus-visible {
-    outline: 2px solid var(--side-accent, var(--color-acid));
+    outline: 2px solid var(--side-accent, var(--color-gold));
     outline-offset: 3px;
   }
   summary {
@@ -116,7 +130,7 @@
 
   /* Subtle paper grain for the creative side, inline SVG noise */
   .bg-grain {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06  0 0 0 0 0.1  0 0 0 0 0.23  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
   .label {

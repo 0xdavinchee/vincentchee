@@ -3,22 +3,24 @@ const links = [
   { href: "/#build", label: "build" },
   { href: "/#create", label: "create" },
   { href: "/#write", label: "write" },
-  { href: "/#contact", label: "say hi" },
+  { href: "/#contact", label: "say gm" },
 ];
+const pill = "rounded-full bg-ink/85 px-4 py-2 text-white ring-1 ring-white/10 backdrop-blur";
 ---
 
-<!-- difference blend inverts against whichever side is underneath, no JS needed -->
-<header class="pointer-events-none fixed inset-x-0 top-0 z-40 text-white mix-blend-difference">
+<header class="pointer-events-none fixed inset-x-0 top-0 z-40">
   <nav
     aria-label="Primary"
-    class="pointer-events-auto mx-auto flex max-w-7xl items-center justify-between px-4 py-4 font-mono text-[0.8rem] sm:px-8"
+    class="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 font-mono text-[0.78rem] sm:px-6"
   >
-    <a href="/" class="font-semibold tracking-tight" aria-label="Vincent Chee, home">VC<span class="opacity-50">/</span></a>
-    <ul class="flex gap-4 sm:gap-7">
+    <a href="/" class:list={["pointer-events-auto font-semibold tracking-tight", pill]} aria-label="Vincent Chee, home"
+      >VC<span class="text-gold">/</span></a
+    >
+    <ul class:list={["pointer-events-auto flex gap-4 sm:gap-6", pill]}>
       {
         links.map((l) => (
           <li>
-            <a href={l.href} class="underline-offset-4 hover:underline">
+            <a href={l.href} class="underline-offset-4 hover:text-gold hover:underline">
               {l.label}
             </a>
           </li>

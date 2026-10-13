@@ -13,14 +13,14 @@ const year = new Date().getFullYear();
         class="font-serif text-[clamp(3.5rem,13vw,11rem)] leading-[0.85] font-medium tracking-[-0.04em]"
         style="font-variation-settings: 'opsz' 144"
       >
-        Say <em class="text-tomato">hi</em>.
+        Say <em class="text-vermilion">gm</em>.
       </h2>
       <p class="max-w-xl text-lg leading-relaxed text-muted">
-        Collabs, a weird idea, a restaurant I have to try, or something you want built. My inbox is open.
+        Collabs, ideas, restaurant recs, or something you want built.
       </p>
       <a
         href={`mailto:${identity.email}`}
-        class="inline-block font-serif text-[clamp(1.4rem,4.5vw,3rem)] break-all text-espresso underline decoration-tomato decoration-2 underline-offset-[0.2em] transition-colors hover:text-tomato-deep sm:break-normal"
+        class="inline-block font-serif text-[clamp(1.4rem,4.5vw,3rem)] break-all text-navy underline decoration-vermilion decoration-2 underline-offset-[0.2em] transition-colors hover:text-vermilion-deep sm:break-normal"
       >
         {identity.email}
       </a>
@@ -45,7 +45,6 @@ const year = new Date().getFullYear();
         }
       </ul>
       <div class="space-y-1 text-muted sm:text-right">
-        <p>{identity.languages.join(" · ")}</p>
         <p>© {year} {identity.name} · {identity.chinese}</p>
       </div>
     </div>

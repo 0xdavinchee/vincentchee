@@ -6,11 +6,12 @@ const WIDTHS = [375, 768, 1440];
 test("home renders every section", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Vincent");
+  await expect(page.locator("#origin-title")).toContainText("Global citizen");
   for (const id of ["build", "create", "write", "contact"]) {
     await expect(page.locator(`#${id}`)).toBeVisible();
   }
-  await expect(page.locator("#build-title")).toContainText("hard part");
-  await expect(page.locator("#create-title")).toContainText("make");
+  await expect(page.locator("#build-title")).toContainText("builder");
+  await expect(page.locator("#create-title")).toContainText("experiences");
   await expect(page.locator('a[href="mailto:itsdavinchee@gmail.com"]')).toBeVisible();
 });
 

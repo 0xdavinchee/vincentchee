@@ -21,7 +21,7 @@ const no = `No. ${String(index + 1).padStart(2, "0")}`;
   target="_blank"
   rel="noopener noreferrer"
   class:list={[
-    "tilt group block border border-espresso/80 bg-paper",
+    "tilt group block border border-navy/80 bg-paper",
     size === "lg" ? "p-3 sm:p-4" : "grid grid-cols-[42%_1fr] items-center gap-4 p-2.5 sm:gap-5",
   ]}
 >
@@ -35,14 +35,14 @@ const no = `No. ${String(index + 1).padStart(2, "0")}`;
       loading="lazy"
     />
     <span
-      class="absolute top-2 left-2 bg-espresso px-2 py-0.5 font-mono text-[0.65rem] tracking-wider text-cream uppercase"
+      class="absolute top-2 left-2 bg-navy px-2 py-0.5 font-mono text-[0.65rem] tracking-wider text-paper uppercase"
       >{no}</span
     >
   </div>
   <div class:list={[size === "lg" ? "flex items-end justify-between gap-6 px-1 pt-4 pb-1" : "space-y-2 pr-2"]}>
     <h4
       class:list={[
-        "font-serif leading-[1.1] text-espresso",
+        "font-serif leading-[1.1] text-navy",
         size === "lg" ? "text-2xl sm:text-[2rem]" : "text-base sm:text-lg",
       ]}
     >

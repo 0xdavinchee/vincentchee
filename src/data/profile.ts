@@ -46,18 +46,38 @@ export const identity = {
   first: "Vincent",
   last: "Chee",
   chinese: "徐冠雄",
-  tagline: ["Thinks in systems.", "Makes things you feel."],
+  greeting: "gm, I'm Vincent.",
+  tagline: "Life is too short to not have fun.",
   now: "Building something.",
   email: "itsdavinchee@gmail.com",
-  location: "Southeast Asia, mostly",
   languages: ["English", "中文", "Français"],
   siteUrl: "https://vincentchee.com",
   description:
-    "Vincent Chee: AI-first engineer and creator. Ships onchain systems, makes food films, once quit a job to do stand-up.",
+    "Vincent Chee: AI-first engineer and fun builder. Malaysian-Chinese and Taiwanese, raised in Beijing, now in Vietnam.",
 };
 
 export const buildIntro =
-  "Seven years shipping software, most of it onchain. These days I build AI-first: models are my leverage, so I can take on more and ship faster than I could alone. I still like owning the hard part end to end.";
+  "I enjoy leveraging technology to create products and experiences that have an impact on people's lives. Seven years shipping software, most of it onchain. These days I build AI-first, using models as leverage to ship more than I could alone.";
+
+export const heritage = ["Malaysian-Chinese", "Taiwanese"];
+
+export interface Place {
+  city: string;
+  country: string;
+  years: string;
+  note: string;
+  now?: boolean;
+}
+
+/** Everywhere I've lived, oldest first */
+export const places: Place[] = [
+  { city: "Beijing", country: "China", years: "→ 2013", note: "Grew up" },
+  { city: "Schenectady", country: "New York", years: "2013 – 17", note: "Union College" },
+  { city: "New York City", country: "USA", years: "2017 – 20", note: "First eng job" },
+  { city: "Kota Kinabalu", country: "Malaysia", years: "2020 – 21", note: "Co-founded Rootinify" },
+  { city: "Tallinn", country: "Estonia", years: "2021 – 24", note: "Superfluid" },
+  { city: "Da Nang", country: "Vietnam", years: "Now", note: "Building, filming, eating", now: true },
+];
 
 export const buildStats: Stat[] = [
   { value: "7+", label: "years shipping" },
@@ -194,7 +214,7 @@ export const projects: Project[] = [
 ];
 
 export const createIntro =
-  "Building pays the bills of the brain. Making things is how I stay a person. I once quit my job to try stand-up comedy, and lately I point a camera at food and the people who make it.";
+  "I love to laugh, learn and live life to the fullest. I splurge on experiences: traveling, cooking and eating delicious food. Lately I film it.";
 
 export const createStats: Stat[] = [
   { value: "156", label: "videos published" },
@@ -225,8 +245,8 @@ export const videos: Video[] = [
 ];
 
 export const standup = {
-  headline: "I quit a job to do stand-up.",
-  body: "Writing jokes is debugging in public: you ship, the room returns an error, you refactor. It taught me more about storytelling than anything else.",
+  headline: "I quit my job to try stand-up comedy.",
+  body: "I'm comfortable with extreme discomfort, collecting experiences that seem random but are challenging.",
 };
 
 export const socials: Social[] = [
