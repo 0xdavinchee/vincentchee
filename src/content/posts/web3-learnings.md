@@ -1,13 +1,14 @@
 ---
 title: Web3 | Two Years In Web3 (almost) — Reflections
 publishedAt: 2023-04-16
+cover: ./birds-eye-superfluid.png
 description: A brief summary of the good, the bad, and the ugly of my time in Web3 and some useful takeaways.
 ---
 _A brief summary of the good, the bad, and the ugly of my time in Web3 and some useful takeaways._
 
 It seems that running a company is complex, who would've known!
 
-![Superfluid, from an IC bird's eye view](birds-eye-superfluid.png)
+![Superfluid, from an IC bird's eye view](./birds-eye-superfluid.png)
 *My perspective of Superfluid and the different parts of the company as an IC working mainly on the protocol.*
 
 **Disclaimer: The views expressed in this post are my own and do not represent those of my employer or any other entity.**

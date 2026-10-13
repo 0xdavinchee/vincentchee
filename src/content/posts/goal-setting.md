@@ -1,6 +1,7 @@
 ---
 title: The Science of Success - How to Set and Achieve your Goals
 publishedAt: 2023-11-06
+cover: ./goals-goal-setting.png
 description: A distillation of Andrew Huberman's Goals Toolkit providing a stupid simple guide on how to set and achieve goals.
 ---
 
@@ -36,7 +37,7 @@ I intend to distill and capture the essence of his 1.5-hour-long podcast so that
 
 ### Goal Setting
 
-![The Steps!](goals-goal-setting.png)
+![The Steps!](./goals-goal-setting.png)
 
 I will provide an example of goal setting for someone who wants to build muscle.
 

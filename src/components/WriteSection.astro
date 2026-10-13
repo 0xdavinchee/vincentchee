@@ -1,0 +1,35 @@
+---
+import WritingList from "./WritingList.astro";
+import { elsewhereWriting } from "../data/profile";
+---
+
+<section id="write" data-side="write" aria-labelledby="write-title" class="scroll-mt-12 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl space-y-14 px-4 sm:px-8">
+    <header class="grid gap-6 lg:grid-cols-2 lg:items-end">
+      <div class="space-y-5">
+        <p class="label">03 / write</p>
+        <h2
+          id="write-title"
+          class="font-serif text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] font-medium tracking-[-0.03em]"
+          style="font-variation-settings: 'opsz' 144"
+        >
+          Where the two <em class="text-accent">meet</em>.
+        </h2>
+      </div>
+      <p class="max-w-md font-mono text-sm leading-relaxed text-muted lg:justify-self-end">
+        Long-form notes on building, goals and the occasional existential crisis. Also on{" "}
+        {
+          elsewhereWriting.map((w, i) => (
+            <>
+              <a href={w.url} target="_blank" rel="noopener noreferrer" class="text-fg underline underline-offset-4 hover:text-accent">
+                {w.label}
+              </a>
+              {i < elsewhereWriting.length - 2 ? ", " : i === elsewhereWriting.length - 2 ? " and " : "."}
+            </>
+          ))
+        }
+      </p>
+    </header>
+    <WritingList />
+  </div>
+</section>
