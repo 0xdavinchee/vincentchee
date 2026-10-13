@@ -1,29 +1,41 @@
 ---
-import SectionHeading from "./SectionHeading.astro";
 import { heritage, identity, places } from "../data/profile";
 ---
 
-<section data-side="origin" aria-labelledby="origin-title" class="py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl space-y-14 px-4 sm:px-8">
-    <div class="space-y-5">
-      <SectionHeading id="origin-title" zh="足跡" class="max-w-5xl text-[clamp(2rem,5vw,3.75rem)] leading-[1.05]">
-        {heritage.join(" & ")}. Raised in Beijing. <em>Global citizen.</em>
-      </SectionHeading>
-      <p class="text-muted">Speaks {identity.languages.join(" and ")}.</p>
-    </div>
+<section data-side="origin" aria-labelledby="origin-title" class="py-16 sm:py-20">
+  <div class="mx-auto max-w-7xl space-y-12 px-4 sm:px-8">
+    <header class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div class="space-y-4">
+        <p class="label">00 / origin</p>
+        <h2
+          id="origin-title"
+          class="max-w-4xl font-serif text-[clamp(2rem,5vw,3.75rem)] leading-[1.02] font-medium tracking-[-0.02em]"
+          style="font-variation-settings: 'opsz' 144"
+        >
+          {heritage.join(" & ")}. Raised in Beijing. <em>Global citizen.</em>
+        </h2>
+      </div>
+      <p class="font-mono text-xs text-muted lg:text-right">
+        speaks {identity.languages.join(" · ")}
+      </p>
+    </header>
 
     <ol class="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-0">
       {
         places.map((p, i) => (
-          <li class="relative space-y-1.5 lg:pr-5">
+          <li class="relative space-y-2 lg:pr-5">
             <div class="mb-5 flex items-center" aria-hidden="true">
               <span class:list={["size-3 shrink-0 rounded-full", p.now ? "bg-gold ring-4 ring-gold/30" : "bg-paper"]} />
               {i < places.length - 1 && <span class="ml-2 hidden h-px flex-1 bg-line lg:block" />}
             </div>
-            <p class="font-mono text-xs text-muted">{p.years}</p>
-            <p class="font-serif text-2xl leading-tight">{p.city}</p>
-            <p class="text-sm text-muted">{p.country}</p>
-            <p class="pt-1 text-sm text-fg/90">{p.note}</p>
+            <p class="font-mono text-[0.7rem] text-muted">
+              {String(i + 1).padStart(2, "0")} · {p.years}
+            </p>
+            <p class="font-serif text-2xl leading-tight" style="font-variation-settings: 'opsz' 72">
+              {p.city}
+            </p>
+            <p class="font-mono text-[0.7rem] tracking-wide text-muted uppercase">{p.country}</p>
+            <p class="text-sm text-fg/90">{p.note}</p>
           </li>
         ))
       }

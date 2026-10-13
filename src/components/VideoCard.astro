@@ -5,23 +5,49 @@ import type { Video } from "../data/profile";
 
 interface Props {
   video: Video;
+  index: number;
+  size?: "lg" | "sm";
 }
-const { video } = Astro.props;
+const { video, index, size = "sm" } = Astro.props;
 
 const thumbs = import.meta.glob<{ default: ImageMetadata }>("../assets/videos/*.jpg", { eager: true });
 const thumb = thumbs[`../assets/videos/${video.thumb}`]?.default;
 if (!thumb) throw new Error(`Missing thumbnail for video ${video.id}: ${video.thumb}`);
+const no = `No. ${String(index + 1).padStart(2, "0")}`;
 ---
 
-<a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer" class="group block space-y-3">
-  <Image
-    src={thumb}
-    alt=""
-    widths={[320, 640]}
-    sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 100vw"
-    class="aspect-video w-full rounded-sm object-cover transition-opacity group-hover:opacity-85"
-    loading="lazy"
-  />
-  <p class="font-serif text-lg leading-snug underline-offset-4 group-hover:underline">{video.title}</p>
-  <p class="text-xs text-muted">{video.views} views</p>
+<a
+  href={`https://www.youtube.com/watch?v=${video.id}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    "tilt group block border border-navy/80 bg-paper",
+    size === "lg" ? "p-3 sm:p-4" : "grid grid-cols-[42%_1fr] items-center gap-4 p-2.5 sm:gap-5",
+  ]}
+>
+  <div class="relative overflow-hidden">
+    <Image
+      src={thumb}
+      alt=""
+      widths={size === "lg" ? [640, 960, 1280] : [320, 640]}
+      sizes={size === "lg" ? "(min-width: 1024px) 720px, 100vw" : "(min-width: 1024px) 220px, 42vw"}
+      class="aspect-video w-full object-cover"
+      loading="lazy"
+    />
+    <span
+      class="absolute top-2 left-2 bg-navy px-2 py-0.5 font-mono text-[0.65rem] tracking-wider text-paper uppercase"
+      >{no}</span
+    >
+  </div>
+  <div class:list={[size === "lg" ? "flex items-end justify-between gap-6 px-1 pt-4 pb-1" : "space-y-2 pr-2"]}>
+    <h4
+      class:list={[
+        "font-serif leading-[1.1] text-navy",
+        size === "lg" ? "text-2xl sm:text-[2rem]" : "text-base sm:text-lg",
+      ]}
+    >
+      {video.title}
+    </h4>
+    <p class="shrink-0 font-mono text-[0.7rem] text-muted">{video.views} views ↗</p>
+  </div>
 </a>

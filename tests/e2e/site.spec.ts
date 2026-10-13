@@ -15,23 +15,16 @@ test("home renders every section", async ({ page }) => {
   await expect(page.locator('a[href="mailto:itsdavinchee@gmail.com"]')).toBeVisible();
 });
 
-test("experience reads as a full résumé without interaction", async ({ page }) => {
+test("every experience row toggles open", async ({ page }) => {
   await page.goto("/");
-  const roles = page.locator("#build ol > li");
-  expect(await roles.count()).toBeGreaterThanOrEqual(8);
-  for (const role of await roles.all()) await expect(role.locator("ul li").first()).toBeVisible();
-});
-
-test("section headings carry their Chinese titles", async ({ page }) => {
-  await page.goto("/");
-  for (const [id, zh] of [
-    ["origin-title", "足跡"],
-    ["build-title", "經歷"],
-    ["create-title", "創作"],
-    ["write-title", "文章"],
-    ["contact-title", "早安"],
-  ]) {
-    await expect(page.locator(`#${id} [lang="zh-Hant"]`)).toHaveText(zh);
+  const rows = page.locator("#build details");
+  const count = await rows.count();
+  expect(count).toBeGreaterThanOrEqual(8);
+  for (let i = 0; i < count; i++) {
+    const row = rows.nth(i);
+    const wasOpen = await row.evaluate((d: HTMLDetailsElement) => d.open);
+    await row.locator("summary").click();
+    await expect.poll(() => row.evaluate((d: HTMLDetailsElement) => d.open)).toBe(!wasOpen);
   }
 });
 

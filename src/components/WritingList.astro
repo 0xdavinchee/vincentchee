@@ -1,22 +1,40 @@
 ---
+import { Image } from "astro:assets";
 import { getPosts, formatDate } from "../lib/posts";
 
 const posts = await getPosts();
 ---
 
-<ol class="divide-y divide-line border-y border-line">
+<ol class="border-t border-line">
   {
-    posts.map((post) => (
-      <li>
-        <a href={`/posts/${post.id}/`} class="group grid gap-x-10 gap-y-2 py-8 sm:grid-cols-[13rem_1fr]">
-          <span class="font-mono text-xs text-muted sm:pt-2">{formatDate(post.data.publishedAt)}</span>
+    posts.map((post, i) => (
+      <li class="group relative border-b border-line">
+        <a
+          href={`/posts/${post.id}/`}
+          class="grid gap-x-8 gap-y-2 py-7 transition-colors hover:text-accent sm:grid-cols-[8rem_1fr_auto] sm:items-baseline sm:py-9"
+        >
+          <span class="font-mono text-xs text-muted">{formatDate(post.data.publishedAt)}</span>
           <span class="space-y-2">
-            <span class="block font-serif text-2xl leading-tight underline-offset-[0.2em] group-hover:underline sm:text-3xl">
+            <span class="block font-serif text-2xl leading-tight sm:text-4xl" style="font-variation-settings: 'opsz' 96">
               {post.data.title}
             </span>
             <span class="block max-w-2xl text-sm leading-relaxed text-muted">{post.data.description}</span>
           </span>
+          <span aria-hidden="true" class="hidden font-mono text-xl transition-transform group-hover:translate-x-1 sm:block">
+            →
+          </span>
         </a>
+        {post.data.cover && (
+          <Image
+            src={post.data.cover}
+            alt=""
+            width={320}
+            class:list={[
+              "pointer-events-none absolute top-1/2 right-24 z-10 hidden aspect-[4/3] w-60 -translate-y-1/2 object-cover opacity-0 shadow-2xl transition duration-300 group-hover:opacity-100 lg:block",
+              i % 2 ? "-rotate-3 group-hover:-rotate-6" : "rotate-3 group-hover:rotate-6",
+            ]}
+          />
+        )}
       </li>
     ))
   }

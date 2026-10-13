@@ -36,6 +36,11 @@ export interface Social {
   side: "build" | "create";
 }
 
+export interface Stat {
+  value: string;
+  label: string;
+}
+
 export const identity = {
   name: "Vincent Chee",
   first: "Vincent",
@@ -72,6 +77,13 @@ export const places: Place[] = [
   { city: "Kota Kinabalu", country: "Malaysia", years: "2020 – 21", note: "Co-founded Rootinify" },
   { city: "Tallinn", country: "Estonia", years: "2021 – 24", note: "Superfluid" },
   { city: "Da Nang", country: "Vietnam", years: "Now", note: "Building, filming, eating", now: true },
+];
+
+export const buildStats: Stat[] = [
+  { value: "7+", label: "years shipping" },
+  { value: "2y10m", label: "at Superfluid" },
+  { value: "1h → 30m", label: "CI build time" },
+  { value: "SDK-Core", label: "owned end to end" },
 ];
 
 export const roles: Role[] = [
@@ -204,7 +216,10 @@ export const projects: Project[] = [
 export const createIntro =
   "I love to laugh, learn and live life to the fullest. I splurge on experiences: traveling, cooking and eating delicious food. Lately I film it.";
 
-export const youtube = { videos: 156, subscribers: 463 };
+export const createStats: Stat[] = [
+  { value: "156", label: "videos published" },
+  { value: "463", label: "YouTube subscribers" },
+];
 
 export const videos: Video[] = [
   {

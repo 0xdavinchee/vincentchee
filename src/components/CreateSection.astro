@@ -1,68 +1,95 @@
 ---
 import { Image } from "astro:assets";
-import SectionHeading from "./SectionHeading.astro";
+import StatStrip from "./StatStrip.astro";
 import VideoCard from "./VideoCard.astro";
-import { createIntro, socials, standup, videos, youtube } from "../data/profile";
+import PlatformRow from "./PlatformRow.astro";
+import { createIntro, createStats, standup, videos } from "../data/profile";
 import portrait from "../assets/portrait.png";
 
-const platforms = socials.filter((s) => s.side === "create");
+const [feature, ...rest] = videos;
 ---
 
-<section id="create" data-side="create" aria-labelledby="create-title" class="scroll-mt-12 py-24 sm:py-32">
-  <div class="mx-auto max-w-7xl space-y-20 px-4 sm:space-y-24 sm:px-8">
-    <div class="grid items-end gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
-      <Image
-        src={portrait}
-        alt="Vincent on a terrace above a turquoise bay lined with palms and green hills"
-        widths={[400, 720]}
-        sizes="(min-width: 1024px) 440px, 100vw"
-        class="aspect-[4/5] w-full max-w-md rounded-sm object-cover object-[48%_center]"
-      />
-      <div class="space-y-8">
-        <SectionHeading id="create-title" zh="創作">Collecting <em>experiences</em>.</SectionHeading>
-        <p class="max-w-2xl font-serif text-2xl leading-snug sm:text-3xl">{createIntro}</p>
-        <p class="text-muted">
-          {youtube.videos} videos and {youtube.subscribers} subscribers on YouTube so far. Also on{" "}
-          {
-            platforms
-              .filter((p) => p.label !== "YouTube")
-              .map((p, i, arr) => (
-                <>
-                  <a href={p.url} target="_blank" rel="noopener noreferrer" class="text-fg underline underline-offset-4 hover:text-accent-text">
-                    {p.label}
-                  </a>
-                  {i < arr.length - 1 ? " and " : "."}
-                </>
-              ))
-          }
-        </p>
+<section id="create" data-side="create" aria-labelledby="create-title" class="bg-grain scroll-mt-12 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl space-y-20 px-4 sm:space-y-28 sm:px-8">
+    <header class="space-y-5">
+      <p class="label">02 / create</p>
+      <h2
+        id="create-title"
+        class="font-serif text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.92] font-medium tracking-[-0.03em]"
+        style="font-variation-settings: 'opsz' 144"
+      >
+        Collecting <em class="text-vermilion">experiences</em>.
+      </h2>
+    </header>
+
+    <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+      <figure class="mx-auto w-full max-w-[18rem] -rotate-2 sm:max-w-sm bg-paper p-3 pb-4 shadow-[0_1px_0_rgb(0_0_0/0.05),0_18px_40px_-18px_rgb(27_20_16/0.45)]">
+        <Image
+          src={portrait}
+          alt="Vincent on a terrace above a turquoise bay lined with palms and green hills"
+          widths={[384, 640]}
+          sizes="(min-width: 1024px) 384px, 90vw"
+          class="aspect-[4/5] w-full object-cover object-[48%_center]"
+        />
+        <figcaption class="pt-3 font-serif text-sm text-muted italic">fig. 1, off the clock</figcaption>
+      </figure>
+
+      <div class="space-y-12">
+        <blockquote class="relative">
+          <span
+            aria-hidden="true"
+            class="absolute -top-10 -left-2 font-serif text-[7rem] leading-none text-vermilion/90 select-none sm:-left-8"
+            >“</span
+          >
+          <p class="relative font-serif text-2xl leading-snug sm:text-[2.1rem]" style="font-variation-settings: 'opsz' 72">
+            {createIntro}
+          </p>
+        </blockquote>
+        <StatStrip stats={createStats} variant="serif" />
       </div>
     </div>
 
     <div class="space-y-8">
-      <div class="flex items-baseline justify-between gap-6 border-b border-line pb-4">
-        <h3 class="font-serif text-3xl">Recent videos</h3>
+      <div class="flex items-end justify-between gap-6 border-b border-navy pb-4">
+        <h3 class="font-serif text-3xl italic sm:text-5xl">Now showing</h3>
         <a
           href="https://www.youtube.com/@itsdavinchee/videos"
           target="_blank"
           rel="noopener noreferrer"
-          class="shrink-0 text-sm text-accent-text underline-offset-4 hover:underline">All on YouTube</a
+          class="shrink-0 font-mono text-xs text-accent-text underline-offset-4 hover:underline"
+          >all videos ↗</a
         >
       </div>
-      <ul class="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-        {
-          videos.map((v) => (
-            <li>
-              <VideoCard video={v} />
-            </li>
-          ))
-        }
-      </ul>
+      <div class="grid gap-6 lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-7">
+          <VideoCard video={feature} index={0} size="lg" />
+        </div>
+        <ul class="flex flex-col justify-between gap-5 lg:col-span-5">
+          {
+            rest.map((v, i) => (
+              <li>
+                <VideoCard video={v} index={i + 1} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
 
-    <aside aria-label="Stand-up" class="grid gap-6 bg-royal p-8 text-paper sm:p-12 lg:grid-cols-2 lg:items-end">
-      <p class="font-serif text-4xl leading-[1.05] sm:text-5xl">{standup.headline}</p>
-      <p class="max-w-md leading-relaxed text-paper/90">{standup.body}</p>
-    </aside>
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div class="space-y-6">
+        <p class="label">find me making stuff</p>
+        <PlatformRow />
+      </div>
+      <aside class="flex flex-col justify-between gap-10 bg-royal p-7 text-paper sm:p-10" aria-label="Stand-up">
+        <p class="font-mono text-[0.72rem] tracking-[0.18em] uppercase opacity-80">side quest</p>
+        <div class="space-y-5">
+          <p class="font-serif text-4xl leading-[1.02] sm:text-5xl" style="font-variation-settings: 'opsz' 144">
+            {standup.headline}
+          </p>
+          <p class="max-w-md text-[0.95rem] leading-relaxed opacity-90">{standup.body}</p>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>

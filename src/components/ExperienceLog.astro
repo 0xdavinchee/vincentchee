@@ -2,36 +2,53 @@
 import { duration, formatYm, roles } from "../data/profile";
 ---
 
-<ol class="divide-y divide-line border-y border-line">
-  {
-    roles.map((r) => (
-      <li class="grid gap-x-10 gap-y-3 py-8 sm:grid-cols-[13rem_1fr]">
-        <div class="space-y-1 text-sm text-muted">
-          <p class="font-mono text-xs">
-            {formatYm(r.start)} – {formatYm(r.end)}
-          </p>
-          <p class="font-mono text-xs">{duration(r.start, r.end)}</p>
-          <p>{r.location}</p>
-        </div>
-        <div class="max-w-3xl space-y-3">
-          <h3 class="text-xl font-semibold tracking-tight">
-            {r.url ? (
-              <a href={r.url} target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:underline">
-                {r.company}
-              </a>
-            ) : (
-              r.company
-            )}
-            <span class="font-normal text-muted"> · {r.title}</span>
-          </h3>
-          <ul class="list-disc space-y-1.5 pl-5 text-[0.95rem] leading-relaxed text-fg/85 marker:text-muted">
-            {r.highlights.map((h) => (
-              <li>{h}</li>
-            ))}
-          </ul>
-          {r.stack && <p class="font-mono text-xs text-muted">{r.stack.join(" · ")}</p>}
-        </div>
-      </li>
-    ))
-  }
-</ol>
+<div>
+  <p class="label mb-4"><span class="text-accent">$</span> git log --career</p>
+  <ol class="border-t border-line">
+    {
+      roles.map((r, i) => (
+        <li class="border-b border-line">
+          <details class="group" open={i === 1}>
+            <summary class="relative grid cursor-pointer grid-cols-[1.75rem_1fr_auto] items-baseline gap-x-3 gap-y-1 py-5 pr-1 transition-colors before:absolute before:inset-y-0 before:-left-4 before:w-0.5 before:bg-accent before:opacity-0 before:transition-opacity hover:bg-surface group-open:before:opacity-100 hover:before:opacity-100 sm:grid-cols-[2.5rem_11rem_1fr_1fr_4.5rem_1.5rem] sm:gap-x-6 sm:pl-2">
+              <span class="font-mono text-xs text-muted">{String(i + 1).padStart(2, "0")}</span>
+              <span class="order-3 col-span-2 col-start-2 font-mono text-xs text-muted sm:order-none sm:col-span-1 sm:col-start-auto">
+                {formatYm(r.start)} – {formatYm(r.end)}
+              </span>
+              <span class="text-lg font-semibold tracking-tight text-fg sm:text-xl">{r.company}</span>
+              <span class="order-4 col-span-2 col-start-2 text-sm text-muted sm:order-none sm:col-span-1 sm:col-start-auto sm:text-base">
+                {r.title}
+              </span>
+              <span class="hidden text-right font-mono text-xs text-muted sm:block">{duration(r.start, r.end)}</span>
+              <span
+                aria-hidden="true"
+                class="text-right font-mono text-lg text-accent transition-transform duration-200 group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
+            <div class="grid gap-5 pb-7 sm:grid-cols-[2.5rem_11rem_1fr] sm:gap-x-6 sm:pl-2">
+              <p class="hidden font-mono text-xs leading-6 text-muted sm:col-start-2 sm:block">{r.location}</p>
+              <div class="col-start-1 space-y-5 pl-[calc(1.75rem+0.75rem)] sm:col-start-3 sm:pl-0">
+                <ul class="max-w-3xl space-y-2.5">
+                  {r.highlights.map((h) => (
+                    <li class="grid grid-cols-[1.25rem_1fr] text-[0.95rem] leading-relaxed text-fg/85">
+                      <span aria-hidden="true" class="font-mono text-accent">→</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+                {r.stack && (
+                  <ul class="flex flex-wrap gap-2" aria-label="Stack">
+                    {r.stack.map((s) => (
+                      <li class="border border-line px-2 py-0.5 font-mono text-[0.7rem] text-muted">{s}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </details>
+        </li>
+      ))
+    }
+  </ol>
+</div>

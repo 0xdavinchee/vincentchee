@@ -1,0 +1,36 @@
+---
+import type { Stat } from "../data/profile";
+
+interface Props {
+  stats: Stat[];
+  variant?: "mono" | "serif";
+}
+const { stats, variant = "mono" } = Astro.props;
+---
+
+<dl class:list={["grid border-y border-line", stats.length === 4 ? "grid-cols-2 lg:grid-cols-4" : stats.length === 2 ? "grid-cols-2" : "grid-cols-3"]}>
+  {
+    stats.map((s, i) => (
+      <div
+        class:list={[
+          "flex flex-col-reverse gap-2 px-1 py-6 sm:px-6 sm:py-8",
+          i > 0 && "sm:border-l sm:border-line",
+          stats.length === 4 && i % 2 === 1 && "border-l border-line pl-4 lg:pl-6",
+          stats.length === 4 && i > 1 && "border-t border-line lg:border-t-0",
+        ]}
+      >
+        <dt class="label">{s.label}</dt>
+        <dd
+          class:list={[
+            "leading-none text-accent-text",
+            variant === "mono"
+              ? "font-mono text-[clamp(1.5rem,4vw,2.75rem)] font-semibold tracking-tight"
+              : "font-serif text-[clamp(2.25rem,6vw,4.5rem)] font-medium italic",
+          ]}
+        >
+          {s.value}
+        </dd>
+      </div>
+    ))
+  }
+</dl>

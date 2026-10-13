@@ -1,4 +1,4 @@
-// Renders public/og.png from the built hero, plus seal favicons. `npm run og` builds first.
+// Renders public/og.png from the built hero. Run after `npm run build`: `npm run og`.
 import { spawn } from "node:child_process";
 import { chromium } from "@playwright/test";
 
@@ -17,18 +17,10 @@ try {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, reducedMotion: "reduce" });
   await page.goto(url, { waitUntil: "networkidle" });
-  await page.addStyleTag({ content: "header{visibility:hidden!important} header [data-seal]{visibility:visible!important} [data-og-hide]{visibility:hidden!important}" });
+  await page.addStyleTag({ content: "header,p.inline-flex{display:none!important}" });
   await page.screenshot({ path: "public/og.png" });
-
-  // favicons from the real seal so the web font matches the page
-  for (const [file, size] of [["public/favicon.png", 64], ["public/apple-touch-icon.png", 180]]) {
-    const seal = page.locator("[data-seal]").first();
-    await seal.evaluate((el, s) => el.style.setProperty("--s", `${s}px`), size);
-    await seal.evaluate((el) => (el.style.borderRadius = "0"));
-    await seal.screenshot({ path: file, omitBackground: true });
-  }
   await browser.close();
-  console.log("wrote public/og.png, favicon.png, apple-touch-icon.png");
+  console.log("wrote public/og.png");
 } finally {
   server.kill();
 }
