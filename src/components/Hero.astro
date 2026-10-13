@@ -1,0 +1,84 @@
+---
+import { identity, socials } from "../data/profile";
+
+const nameSize = "text-[23vw] sm:text-[clamp(3.6rem,17.5vw,16rem)]";
+---
+
+<section aria-labelledby="hero-name" class="relative">
+  <!-- BUILD half -->
+  <div data-side="build" class="bg-grid relative flex min-h-[40svh] sm:min-h-[52svh] flex-col justify-end overflow-hidden pt-24">
+    <div class="mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 sm:px-8">
+      <p class="rise font-mono text-xs leading-relaxed text-muted sm:text-sm" style="--i:0">
+        <span class="text-accent">~</span> $ whoami<br />
+        <span class="text-fg">engineer</span> <span class="opacity-60">--stack</span> solidity,ts
+      </p>
+      <p class="rise max-w-[14ch] text-right font-mono text-sm text-fg sm:text-lg" style="--i:2">
+        {identity.tagline[0]}
+      </p>
+    </div>
+    <div class="mx-auto w-full max-w-7xl px-3 sm:px-6">
+      <h1
+        id="hero-name"
+        class:list={[
+          "rise -mb-[0.09em] font-mono leading-[0.8] font-extrabold tracking-[-0.07em] uppercase select-none",
+          nameSize,
+        ]}
+        style="--i:1"
+      >
+        {identity.first}<span class="sr-only"> {identity.last}</span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- CREATE half -->
+  <div data-side="create" class="bg-grain relative overflow-hidden pb-14 sm:pb-20">
+    <div class="mx-auto w-full max-w-7xl px-3 sm:px-6">
+      <p
+        aria-hidden="true"
+        class:list={[
+          "rise -mt-[0.06em] font-serif leading-[0.85] font-medium tracking-[-0.03em] text-tomato italic select-none",
+          nameSize,
+        ]}
+        style="--i:2; font-variation-settings: 'opsz' 144"
+      >
+        {identity.last}<span class="text-espresso not-italic">.</span>
+      </p>
+    </div>
+
+    <div class="mx-auto mt-8 grid w-full max-w-7xl gap-8 px-4 sm:mt-10 sm:grid-cols-[1fr_auto] sm:items-end sm:px-8">
+      <div class="rise space-y-6" style="--i:3">
+        <p class="max-w-[18ch] font-serif text-3xl leading-[1.05] sm:text-5xl" style="font-variation-settings: 'opsz' 96">
+          {identity.tagline[1]}
+        </p>
+        <p class="inline-flex items-center gap-3 rounded-full border border-line bg-surface px-4 py-2 font-mono text-xs sm:text-sm">
+          <span class="size-2 rounded-full bg-tomato" aria-hidden="true"></span>
+          <span><span class="text-muted">Now:</span> {identity.now}</span>
+        </p>
+      </div>
+
+      <ul class="rise flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-muted sm:justify-end sm:text-sm" style="--i:4">
+        {
+          socials.map((s) => (
+            <li>
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline-offset-4 hover:text-fg hover:underline"
+              >
+                {s.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <p
+      aria-hidden="true"
+      class="pointer-events-none absolute top-10 right-4 hidden font-serif text-2xl text-muted/60 [writing-mode:vertical-rl] lg:block"
+    >
+      {identity.chinese}
+    </p>
+  </div>
+</section>

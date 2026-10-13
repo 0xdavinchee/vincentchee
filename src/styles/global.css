@@ -1,1 +1,224 @@
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces/opsz.css";
+@import "@fontsource-variable/fraunces/opsz-italic.css";
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: "Fraunces Variable", Georgia, "Times New Roman", serif;
+
+  --color-ink: #0a0c0f;
+  --color-graphite: #12161b;
+  --color-acid: #c6ff3d;
+  --color-cream: #f2eadc;
+  --color-paper: #fbf5ea;
+  --color-tomato: #e8462b;
+  --color-tomato-deep: #b3301a;
+  --color-saffron: #f2a93b;
+  --color-espresso: #1b1410;
+}
+
+/* Side tokens: every section opts into one side; components only use these. */
+@theme inline {
+  --color-bg: var(--side-bg);
+  --color-surface: var(--side-surface);
+  --color-fg: var(--side-fg);
+  --color-muted: var(--side-muted);
+  --color-line: var(--side-line);
+  --color-accent: var(--side-accent);
+  --color-accent-fg: var(--side-accent-fg);
+  /* accent that passes AA as small text on bg */
+  --color-accent-text: var(--side-accent-text);
+}
+
+[data-side="build"] {
+  --side-bg: var(--color-ink);
+  --side-surface: var(--color-graphite);
+  --side-fg: #e7eaee;
+  --side-muted: #8b95a1;
+  --side-line: rgb(255 255 255 / 0.08);
+  --side-accent: var(--color-acid);
+  --side-accent-fg: var(--color-ink);
+  --side-accent-text: var(--color-acid);
+  color-scheme: dark;
+}
+
+[data-side="create"] {
+  --side-bg: var(--color-cream);
+  --side-surface: var(--color-paper);
+  --side-fg: var(--color-espresso);
+  --side-muted: #6b5d52;
+  --side-line: rgb(27 20 16 / 0.14);
+  --side-accent: var(--color-tomato);
+  --side-accent-fg: var(--color-paper);
+  --side-accent-text: var(--color-tomato-deep);
+  color-scheme: light;
+}
+
+/* Writing: where the two meet. Espresso ground, serif titles, mono metadata. */
+[data-side="write"] {
+  --side-bg: var(--color-espresso);
+  --side-surface: #241b16;
+  --side-fg: var(--color-cream);
+  --side-muted: #b3a597;
+  --side-line: rgb(242 234 220 / 0.12);
+  --side-accent: var(--color-saffron);
+  --side-accent-fg: var(--color-espresso);
+  --side-accent-text: var(--color-saffron);
+  color-scheme: dark;
+}
+
+[data-side] {
+  background-color: var(--side-bg);
+  color: var(--side-fg);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-acid);
+    color: var(--color-ink);
+  }
+  [data-side="create"] ::selection {
+    background: var(--color-tomato);
+    color: var(--color-paper);
+  }
+  :focus-visible {
+    outline: 2px solid var(--side-accent, var(--color-acid));
+    outline-offset: 3px;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  /* Engineering-paper grid */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--side-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--side-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Subtle paper grain for the creative side, inline SVG noise */
+  .bg-grain {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .label {
+    @apply font-mono text-[0.72rem] tracking-[0.18em] text-muted uppercase;
+  }
+
+  /* Hover color flood: accent rises from the bottom. */
+  .flood {
+    background-image: linear-gradient(var(--side-accent), var(--side-accent));
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 0%;
+    transition:
+      background-size 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      color 200ms ease;
+  }
+  .flood:hover,
+  .flood:focus-visible {
+    background-size: 100% 100%;
+    color: var(--side-accent-fg);
+  }
+  .flood:hover .flood-muted,
+  .flood:focus-visible .flood-muted {
+    color: inherit;
+  }
+
+  /* Zine tilt with hard offset shadow */
+  .tilt {
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 220ms ease;
+  }
+  .tilt:hover,
+  .tilt:focus-visible {
+    transform: translate(-3px, -3px) rotate(-1.25deg);
+    box-shadow: 6px 6px 0 var(--side-accent);
+  }
+
+  /* The one entrance: staggered rise on load. Set --i per element. */
+  .rise {
+    animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  .prose-post {
+    @apply text-[1.075rem] leading-[1.75] text-fg/90;
+  }
+  .prose-post > * + * {
+    margin-top: 1.25em;
+  }
+  .prose-post h2 {
+    @apply mt-14 font-serif text-3xl leading-tight font-semibold text-fg;
+  }
+  .prose-post h3 {
+    @apply mt-10 font-serif text-2xl font-semibold text-fg;
+  }
+  .prose-post a {
+    @apply text-accent-text underline decoration-1 underline-offset-4;
+  }
+  .prose-post strong {
+    @apply font-semibold text-fg;
+  }
+  .prose-post ul {
+    @apply list-disc pl-6;
+  }
+  .prose-post ol {
+    @apply list-decimal pl-6;
+  }
+  .prose-post li + li {
+    margin-top: 0.4em;
+  }
+  .prose-post blockquote {
+    @apply border-l-2 border-accent pl-5 font-serif text-xl text-fg italic;
+  }
+  .prose-post img {
+    @apply mx-auto rounded-sm;
+  }
+  .prose-post code {
+    @apply rounded bg-surface px-1.5 py-0.5 font-mono text-[0.9em];
+  }
+  .prose-post pre {
+    @apply overflow-x-auto rounded bg-surface p-4 font-mono text-sm;
+  }
+  .prose-post hr {
+    @apply border-line;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

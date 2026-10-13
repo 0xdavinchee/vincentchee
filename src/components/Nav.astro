@@ -1,0 +1,29 @@
+---
+const links = [
+  { href: "/#build", label: "build" },
+  { href: "/#create", label: "create" },
+  { href: "/#write", label: "write" },
+  { href: "/#contact", label: "say hi" },
+];
+---
+
+<!-- difference blend inverts against whichever side is underneath, no JS needed -->
+<header class="pointer-events-none fixed inset-x-0 top-0 z-40 text-white mix-blend-difference">
+  <nav
+    aria-label="Primary"
+    class="pointer-events-auto mx-auto flex max-w-7xl items-center justify-between px-4 py-4 font-mono text-[0.8rem] sm:px-8"
+  >
+    <a href="/" class="font-semibold tracking-tight" aria-label="Vincent Chee, home">VC<span class="opacity-50">/</span></a>
+    <ul class="flex gap-4 sm:gap-7">
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} class="underline-offset-4 hover:underline">
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
