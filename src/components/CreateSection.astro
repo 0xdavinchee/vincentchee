@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import StatStrip from "./StatStrip.astro";
+import VideoCard from "./VideoCard.astro";
+import PlatformRow from "./PlatformRow.astro";
+import { createIntro, createStats, standup, videos } from "../data/profile";
+import portrait from "../assets/profile.jpg";
+
+const [feature, ...rest] = videos;
+---
+
+<section id="create" data-side="create" aria-labelledby="create-title" class="bg-grain scroll-mt-12 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl space-y-20 px-4 sm:space-y-28 sm:px-8">
+    <header class="space-y-5">
+      <p class="label">02 / create</p>
+      <h2
+        id="create-title"
+        class="font-serif text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.92] font-medium tracking-[-0.03em]"
+        style="font-variation-settings: 'opsz' 144"
+      >
+        And then I <em class="text-tomato">make</em><br class="hidden sm:block" /> things.
+      </h2>
+    </header>
+
+    <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+      <figure class="mx-auto w-full max-w-[18rem] -rotate-2 sm:max-w-sm bg-paper p-3 pb-4 shadow-[0_1px_0_rgb(0_0_0/0.05),0_18px_40px_-18px_rgb(27_20_16/0.45)]">
+        <Image
+          src={portrait}
+          alt="Vincent on a bridge in Florence, phone in hand, golden hour"
+          widths={[384, 640]}
+          sizes="(min-width: 1024px) 384px, 90vw"
+          class="aspect-[4/5] w-full object-cover object-[60%_center]"
+        />
+        <figcaption class="pt-3 font-serif text-sm text-muted italic">fig. 1, off the clock</figcaption>
+      </figure>
+
+      <div class="space-y-12">
+        <blockquote class="relative">
+          <span
+            aria-hidden="true"
+            class="absolute -top-10 -left-2 font-serif text-[7rem] leading-none text-tomato/90 select-none sm:-left-8"
+            >“</span
+          >
+          <p class="relative font-serif text-2xl leading-snug sm:text-[2.1rem]" style="font-variation-settings: 'opsz' 72">
+            {createIntro}
+          </p>
+        </blockquote>
+        <StatStrip stats={createStats} variant="serif" />
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <div class="flex items-end justify-between gap-6 border-b border-espresso pb-4">
+        <h3 class="font-serif text-3xl italic sm:text-5xl">Now showing</h3>
+        <a
+          href="https://www.youtube.com/@itsdavinchee/videos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0 font-mono text-xs text-accent-text underline-offset-4 hover:underline"
+          >all videos ↗</a
+        >
+      </div>
+      <div class="grid gap-6 lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-7">
+          <VideoCard video={feature} index={0} size="lg" />
+        </div>
+        <ul class="flex flex-col justify-between gap-5 lg:col-span-5">
+          {
+            rest.map((v, i) => (
+              <li>
+                <VideoCard video={v} index={i + 1} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div class="space-y-6">
+        <p class="label">find me making stuff</p>
+        <PlatformRow />
+      </div>
+      <aside class="flex flex-col justify-between gap-10 bg-chili p-7 text-paper sm:p-10" aria-label="Stand-up">
+        <p class="font-mono text-[0.72rem] tracking-[0.18em] uppercase opacity-80">side quest</p>
+        <div class="space-y-5">
+          <p class="font-serif text-4xl leading-[1.02] sm:text-5xl" style="font-variation-settings: 'opsz' 144">
+            {standup.headline}
+          </p>
+          <p class="max-w-md text-[0.95rem] leading-relaxed opacity-90">{standup.body}</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
