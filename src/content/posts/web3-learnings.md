@@ -31,7 +31,7 @@ Understanding the **why** is essential whenever you undertake any endeavor.
 
 Ask: __*what is the essence of what I am trying to accomplish*__?
 
-Then ask, [__*is the problem the problem*__](https://www.samuelthomasdavies.com/elevator-waiting-times/)?
+Then ask, [__*is the problem the problem*__](https://web.archive.org/web/20220819123859/https://www.samuelthomasdavies.com/elevator-waiting-times/)?
 
 Regularly challenging your assumptions can reveal that your initial problem might not be the root problem and can reveal alternative, more straightforward solutions to the fundamental issue.
 
@@ -46,8 +46,8 @@ In the case of Superfluid, there are a few things we've built that I believe hav
 - **SDK-Core**: [`viem`](https://viem.sh/) did not exist, providing a low-level un-opinionated API leverages both the tool itself and developers' prior knowledge of how to use it. You can focus on teaching them about your protocol instead of how to use *yet another tool*.
 - **SDK-Redux**: [`wagmi`](https://wagmi.sh/) and [`wagmi-cli`](https://wagmi.sh/cli/getting-started) did not exist. Similar to SDK-Core, this was an opinionated way of doing things. These next-gen tools automate a lot of what we aimed to accomplish for Superfluid by generating hooks (for react) that are plug-n-playable. And these tools do it for any contracts. The only required bundling/maintenance is providing the ABIs, the contract addresses on different networks, and examples of how to use these tools.
 - **Subgraph integration tests**: [`matchstick`](https://github.com/LimeChain/matchstick) did not exist. The integration tests aimed to ensure that the data on the subgraph was correct. This involved storing the state locally in the tests, which `matchstick` does.
-- **JS Truffle operation scripts**: `hardhat` did not exist. Using TypeScript and leveraging something like [hardhat-deploy](https://github.com/wighawag/hardhat-deploy) or [hardhat-ignition](https://github.com/NomicFoundation/ignition/) (when production-ready) would make it far easier to modify, reason about, and test such a crucial part of the business.
-- **TS Hardhat tests**: [`foundry`](https://github.com/foundry-rs/foundry) did not exist. Using `foundry`: build and test times that are multiples faster, less context switching between JS and Solidity, [fuzz testing](https://book.getfoundry.sh/forge/fuzz-testing), [invariant testing](https://book.getfoundry.sh/forge/invariant-testing) and even [mutation testing](https://github.com/foundry-rs/foundry/issues/478) down the line.
+- **JS Truffle operation scripts**: `hardhat` did not exist. Using TypeScript and leveraging something like [hardhat-deploy](https://github.com/wighawag/hardhat-deploy) or [hardhat-ignition](https://github.com/NomicFoundation/hardhat-ignition) (when production-ready) would make it far easier to modify, reason about, and test such a crucial part of the business.
+- **TS Hardhat tests**: [`foundry`](https://github.com/foundry-rs/foundry) did not exist. Using `foundry`: build and test times that are multiples faster, less context switching between JS and Solidity, [fuzz testing](https://www.getfoundry.sh/forge/testing), [invariant testing](https://www.getfoundry.sh/guides/invariant-testing) and even [mutation testing](https://github.com/foundry-rs/foundry/issues/478) down the line.
 
 It is vital to recognize that building in house-tools often carries heavy maintenance overhead (testing, bug fixes, adding features). It is usually better to leverage tools built by those who spend most of their waking hours thinking about and working on that tool (good ol' comparative advantage).
 

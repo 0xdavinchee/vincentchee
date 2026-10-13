@@ -31,7 +31,7 @@ Setting goals is making a contract with yourself, indicating that you want to be
 
 ## How to set goals?
 
-The inspiration for writing this article is the [Goals Toolkit podcast by Andrew Huberman](https://www.youtube.com/watch?v=CrtR12PBKb0).
+The inspiration for writing this article is the [Goals Toolkit podcast by Andrew Huberman](https://www.youtube.com/watch?v=t1F7EEGPQwo).
 
 I intend to distill and capture the essence of his 1.5-hour-long podcast so that the main points are captured and digestible in 15-20 minutes while still being just as helpful. Here goes:
 

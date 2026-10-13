@@ -74,6 +74,23 @@ test("links are well formed", async ({ page }) => {
   }
 });
 
+test("every internal link resolves", async ({ page, request }) => {
+  const seen = new Set<string>();
+  for (const path of PAGES) {
+    await page.goto(path);
+    const hrefs = await page.locator('a[href^="/"]').evaluateAll((as) => as.map((a) => a.getAttribute("href")!));
+    for (const href of hrefs) {
+      if (seen.has(href)) continue;
+      seen.add(href);
+      const [target, hash] = href.split("#");
+      const res = await request.get(target || "/");
+      expect(res.status(), `${href} (linked from ${path})`).toBe(200);
+      if (hash) expect(await res.text(), `#${hash} missing on ${target || "/"}`).toContain(`id="${hash}"`);
+    }
+  }
+  expect(seen.size).toBeGreaterThan(3);
+});
+
 test("images have alt attributes and load", async ({ page }) => {
   await page.goto("/");
   const imgs = page.locator("img");

@@ -50,7 +50,7 @@ export const identity = {
   tagline: "Life is too short to not have fun.",
   now: "Building something.",
   email: "itsdavinchee@gmail.com",
-  languages: ["English", "中文", "Français"],
+  languages: ["English", "中文"],
   siteUrl: "https://vincentchee.com",
   description:
     "Vincent Chee: AI-first engineer and fun builder. Malaysian-Chinese and Taiwanese, raised in Beijing, now in Vietnam.",
@@ -219,7 +219,6 @@ export const createIntro =
 export const createStats: Stat[] = [
   { value: "156", label: "videos published" },
   { value: "463", label: "YouTube subscribers" },
-  { value: "3", label: "languages spoken" },
 ];
 
 export const videos: Video[] = [
@@ -251,7 +250,6 @@ export const standup = {
 
 export const socials: Social[] = [
   { label: "GitHub", handle: "0xdavinchee", url: "https://github.com/0xdavinchee", side: "build" },
-  { label: "X", handle: "0xdavinchee", url: "https://x.com/0xdavinchee", side: "build" },
   { label: "Farcaster", handle: "0xdavinchee", url: "https://farcaster.xyz/0xdavinchee", side: "build" },
   { label: "YouTube", handle: "itsdavinchee", url: "https://www.youtube.com/@itsdavinchee", side: "create" },
   { label: "TikTok", handle: "itsdavinchee", url: "https://www.tiktok.com/@itsdavinchee", side: "create" },
@@ -261,7 +259,7 @@ export const socials: Social[] = [
 export const elsewhereWriting = [
   { label: "Substack", url: "https://0xdavinchee.substack.com/" },
   { label: "Medium", url: "https://0xdavinchee.medium.com/" },
-  { label: "Paragraph", url: "https://paragraph.xyz/@0x688390820b57cd65c1f76b5509ba28f79a343343" },
+  { label: "Paragraph", url: "https://paragraph.com/@0x688390820b57cd65c1f76b5509ba28f79a343343" },
 ];
 
 /** "2021-08" → "Aug 2021" */
