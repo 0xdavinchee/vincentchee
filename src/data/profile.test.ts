@@ -15,11 +15,13 @@ describe("roles", () => {
     expect(starts).toEqual([...starts].sort((a, b) => b - a));
   });
 
-  it("every role has highlights and stack", () => {
-    for (const r of roles) {
-      expect(r.highlights.length).toBeGreaterThan(0);
-      expect(r.stack.length).toBeGreaterThan(0);
-    }
+  it("every role has highlights", () => {
+    for (const r of roles) expect(r.highlights.length).toBeGreaterThan(0);
+  });
+
+  it("only the two most recent roles list a stack", () => {
+    expect(roles.slice(0, 2).every((r) => r.stack?.length)).toBe(true);
+    expect(roles.slice(2).some((r) => r.stack)).toBe(false);
   });
 });
 

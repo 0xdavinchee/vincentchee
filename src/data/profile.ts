@@ -9,7 +9,8 @@ export interface Role {
   location: string;
   url?: string;
   highlights: string[];
-  stack: string[];
+  /** only shown for recent roles */
+  stack?: string[];
 }
 
 export interface Project {
@@ -46,17 +47,17 @@ export const identity = {
   last: "Chee",
   chinese: "徐冠雄",
   tagline: ["Thinks in systems.", "Makes things you feel."],
-  now: "Building something. Still figuring out what.",
+  now: "Building something.",
   email: "itsdavinchee@gmail.com",
   location: "Southeast Asia, mostly",
   languages: ["English", "中文", "Français"],
   siteUrl: "https://vincentchee.com",
   description:
-    "Vincent Chee: Web3 engineer and creator. Smart contracts and subgraphs by day, food films and stand-up by night.",
+    "Vincent Chee: AI-first engineer and creator. Ships onchain systems, makes food films, once quit a job to do stand-up.",
 };
 
 export const buildIntro =
-  "Seven years shipping software, most of it onchain. I like owning the hard part end to end: the contract, the indexer, the SDK and the CI that keeps them honest.";
+  "Seven years shipping software, most of it onchain. These days I build AI-first: models are my leverage, so I can take on more and ship faster than I could alone. I still like owning the hard part end to end.";
 
 export const buildStats: Stat[] = [
   { value: "7+", label: "years shipping" },
@@ -104,7 +105,6 @@ export const roles: Role[] = [
       "Designed tokenomics for an NFT liquidity protocol priced off Uniswap TWAP oracles.",
       "Implemented UUPS upgradability for Treasure Chess.",
     ],
-    stack: ["Solidity", "Hardhat", "Uniswap"],
   },
   {
     company: "Rootinify",
@@ -116,7 +116,6 @@ export const roles: Role[] = [
       "Took a habit tracker from idea to Wyoming LLC to MVP.",
       "Owned growth strategy, the Gatsby landing page, and a Node + MongoDB backend.",
     ],
-    stack: ["Gatsby", "Node.js", "MongoDB"],
   },
   {
     company: "Operatic",
@@ -128,7 +127,6 @@ export const roles: Role[] = [
       "Learned PHP on the job and shipped membership permissions and UPS shipping logic.",
       "Built a Slack-like community feature for EveryMother on getstream.io.",
     ],
-    stack: ["PHP", "getstream.io"],
   },
   {
     company: "UpTop",
@@ -141,7 +139,6 @@ export const roles: Role[] = [
       "Live-updating map search over all listings with clustered Google Maps markers and Haversine distance sort.",
       "Built the transactions ledger for v1 of the owner accounting product.",
     ],
-    stack: ["TypeScript", "React", "Redux", "C#"],
   },
   {
     company: "Deloitte",
@@ -150,7 +147,6 @@ export const roles: Role[] = [
     end: "2016-09",
     location: "Beijing, China",
     highlights: ["Implemented the frontend of BMW's IT management system with the consulting team."],
-    stack: ["JavaScript"],
   },
   {
     company: "EY",
@@ -159,7 +155,6 @@ export const roles: Role[] = [
     end: "2015-08",
     location: "Beijing, China",
     highlights: ["Researched mobile-payment market entry for Huawei, and China's VAT reform for the tax practice."],
-    stack: ["Research"],
   },
 ];
 
@@ -168,14 +163,6 @@ export const education = {
   degree: "B.S. Computer Science, minor in Economics",
   years: "2013 – 2017",
 };
-
-export const stack: { group: string; items: string[] }[] = [
-  { group: "contracts", items: ["Solidity", "Foundry", "Hardhat"] },
-  { group: "indexing", items: ["The Graph", "Subgraphs"] },
-  { group: "client", items: ["TypeScript", "React", "ethers.js", "wagmi", "viem"] },
-  { group: "infra", items: ["GitHub Actions", "Node.js"] },
-  { group: "learning", items: ["Rust"] },
-];
 
 export const projects: Project[] = [
   {

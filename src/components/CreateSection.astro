@@ -4,7 +4,7 @@ import StatStrip from "./StatStrip.astro";
 import VideoCard from "./VideoCard.astro";
 import PlatformRow from "./PlatformRow.astro";
 import { createIntro, createStats, standup, videos } from "../data/profile";
-import portrait from "../assets/profile.jpg";
+import portrait from "../assets/portrait.png";
 
 const [feature, ...rest] = videos;
 ---
@@ -26,10 +26,10 @@ const [feature, ...rest] = videos;
       <figure class="mx-auto w-full max-w-[18rem] -rotate-2 sm:max-w-sm bg-paper p-3 pb-4 shadow-[0_1px_0_rgb(0_0_0/0.05),0_18px_40px_-18px_rgb(27_20_16/0.45)]">
         <Image
           src={portrait}
-          alt="Vincent on a bridge in Florence, phone in hand, golden hour"
+          alt="Vincent on a terrace above a turquoise bay lined with palms and green hills"
           widths={[384, 640]}
           sizes="(min-width: 1024px) 384px, 90vw"
-          class="aspect-[4/5] w-full object-cover object-[60%_center]"
+          class="aspect-[4/5] w-full object-cover object-[48%_center]"
         />
         <figcaption class="pt-3 font-serif text-sm text-muted italic">fig. 1, off the clock</figcaption>
       </figure>

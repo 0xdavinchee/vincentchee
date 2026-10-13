@@ -1,7 +1,6 @@
 ---
 import StatStrip from "./StatStrip.astro";
 import ExperienceLog from "./ExperienceLog.astro";
-import StackGrid from "./StackGrid.astro";
 import ProjectCard from "./ProjectCard.astro";
 import { buildIntro, buildStats, education, projects } from "../data/profile";
 ---
@@ -27,23 +26,17 @@ import { buildIntro, buildStats, education, projects } from "../data/profile";
 
     <ExperienceLog />
 
-    <div class="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-      <div class="space-y-4">
-        <p class="label"><span class="text-accent">$</span> cat stack.toml</p>
-        <StackGrid />
-      </div>
-      <div class="space-y-4">
-        <p class="label"><span class="text-accent">$</span> ls ~/selected</p>
-        <ul class="grid gap-4 sm:grid-cols-2">
-          {
-            projects.map((p) => (
-              <li>
-                <ProjectCard project={p} />
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+    <div class="space-y-4">
+      <p class="label"><span class="text-accent">$</span> ls ~/selected</p>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          projects.map((p) => (
+            <li>
+              <ProjectCard project={p} />
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </section>
